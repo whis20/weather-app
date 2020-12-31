@@ -17,7 +17,7 @@ const AppTitle = styled.h1`
   font-weight: 500;
   color:white;
   transition: 0.3s 1.4s;
-  opacity: 0.9;
+  opacity: 0.8;
 `;
 
 const api = {
