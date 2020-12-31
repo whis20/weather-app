@@ -24,14 +24,14 @@ body {
 .appd {
   background-image: url('./assets/sunny-bg.jpg');
   background-size:cover;
-  background-position: bottom;
+  background-position: top;
   transition: 0.8s ease-out;
 }
 
 .app.warm.d {
   background-image: url('./assets/autumn-bg.jpg');
   background-size:cover;
-  background-position: bottom;
+  background-position: top;
   transition: 0.8s ease-out;
 }
 
@@ -59,6 +59,10 @@ body {
   text-align: center;
   background-color: #31313154;
   color: #FFF;
+}
+time {
+  color: #FFF;
+  opacity: 0.8;
 }
 main {
   min-height: 100vh;

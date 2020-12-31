@@ -10,13 +10,14 @@ const AppTitle = styled.h1`
   display: block;
   height: 64px;
   margin: 0;
+  margin-left:20px;
   padding: 20px 0;
-  font-size: 20px;
+  font-size: 30px;
   text-transform: uppercase;
   font-weight: 500;
-  color:black;
+  color:white;
   transition: 0.3s 1.4s;
-  opacity: 0.8;
+  opacity: 0.9;
 `;
 
 const api = {
