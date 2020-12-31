@@ -1,4 +1,5 @@
 {
+  "homepage": "https://whis20.github.io/weather-app",
   "name": "weather-app",
   "version": "0.1.0",
   "private": true,
@@ -6,12 +7,21 @@
     "@testing-library/jest-dom": "^5.11.8",
     "@testing-library/react": "^11.2.2",
     "@testing-library/user-event": "^12.6.0",
+    "antd": "^4.9.4",
+    "moment": "^2.29.1",
+    "moment-timezone": "^0.5.32",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "react-fittext": "^1.0.0",
+    "react-live-clock": "^5.0.13",
+    "react-moment": "^1.1.1",
     "react-scripts": "4.0.1",
+    "styled-components": "^5.2.1",
     "web-vitals": "^0.2.4"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -34,5 +44,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^3.1.0"
   }
 }
