@@ -7,9 +7,8 @@ import 'moment-timezone';
 var ReactFitText = require('react-fittext');
 
 const AppTitle = styled.h1`
-  display: block;
+  display: relative;
   height: 64px;
-  margin: 0;
   margin-left:20px;
   padding: 20px 0;
   font-size: 30px;
@@ -56,78 +55,80 @@ function App() {
   }
 
   return (
-    <div >
-      <div className={
-        (typeof weather.main != "undefined") ?
-          (
-            (weather.main.temp >= 18 && weather.weather[0].icon.charAt(2)==='n')?
-            'app warm n':
-            (weather.main.temp >= 18 && weather.weather[0].icon.charAt(2)==='d')?
-            'app warm d':
-            (weather.main.temp < 18 && weather.weather[0].icon.charAt(2)==='n')?
-            'app cold n':'app cold d'
-          )
-          : 'appd'}
-      >
-        <AppTitle >Weather app</AppTitle>
-        <main>
-          <div className="search-box">
-            <input
-              type="text"
-              className="search-bar"
-              placeholder="Search..."
-              onChange={e => setQuery(e.target.value)}
-              value={query}
-              onKeyPress={search}
-            />
-            <div id="clock">
-              <ReactFitText compressor={2.5}>
-                <h4>
-                  <Clock format="h:mm:ss a" interval={1000} ticking={true} />
-                </h4>
-              </ReactFitText>
-            </div>
+    <div className={
+      (typeof weather.main != "undefined") ?
+        (
+          (weather.main.temp >= 18 && weather.weather[0].icon.charAt(2) === 'n') ?
+            'app warm n' :
+            (weather.main.temp >= 18 && weather.weather[0].icon.charAt(2) === 'd') ?
+              'app warm d' :
+              (weather.main.temp < 18 && weather.weather[0].icon.charAt(2) === 'n') ?
+                'app cold n' : 'app cold d'
+        )
+        : 'app warm d'}
+    >
+      <AppTitle >Weather app</AppTitle>
+      <main>
+        <div className="search-box">
+          <input
+            type="text"
+            className="search-bar"
+            placeholder="Search..."
+            onChange={e => setQuery(e.target.value)}
+            value={query}
+            onKeyPress={search}
+          />
+          <div id="clock">
+            <ReactFitText compressor={2.5}>
+              <h4>
+                <Clock format="h:mm:ss a" interval={1000} ticking={true} />
+              </h4>
+            </ReactFitText>
           </div>
-          {(typeof weather.main != "undefined") ? (
-            <div>
-              <div className="location-box">
-                <div className="location">{weather.name}, {weather.sys.country}</div>
-                <div className="date">{dateBuilder(new Date())}</div>
+        </div>
+        {(typeof weather.main != "undefined") ? (
+          <div >
+            <div className="location-box">
+              <div className="location">{weather.name}, {weather.sys.country}</div>
+              <div className="date">{dateBuilder(new Date())}</div>
+            </div>
+
+            <div className="weather-box">
+              <div className="icon">
+                <img
+                  alt="icon"
+                  src={"https://openweathermap.org/img/wn/" + weather.weather[0].icon + "@2x.png"}
+                >
+                </img><br />
+                {weather.weather[0].description}
               </div>
-              <br /><br /><br /><br /><br />
-              <div className="weather-box">
-                <div id="block_container">
-
-                  <div id="icon">
-                    <img
-                    alt="icon"
-                      src={"https://openweathermap.org/img/wn/" + weather.weather[0].icon + "@2x.png"}
-                    >
-                    </img>
-                    <br />
-                    {weather.weather[0].description}
-                  </div>
-                  <div className="temp" id="temp">
-
-                    {Math.round(weather.main.temp)}℃
-                  <div id="feels">
-                      <div className="feel_like">RealFeel {Math.round(weather.main.feels_like)}℃</div>
-                      <div className="weather">{weather.weather[0].main}</div>
-                    </div>
-                  </div>
+              <div className="temp">
+              <div className="temperature">
+                {Math.round(weather.main.temp)}℃
+                <div id="vline"></div>
+                <div className="minmax">
+                <br />
+                {Math.round(weather.main.temp_max)}° max.
+                <br /><br/>
+                {Math.round(weather.main.temp_min)}° min.
                 </div>
-                <br /><br /><br /><br /><br />
-
+                </div>
+                  <div id="feels">
+                    <div className="feel_like">RealFeel {Math.round(weather.main.feels_like)}℃</div>
+                    <div className="weather">{weather.weather[0].main}</div>
+                </div>
               </div>
             </div>
-          ) : ('')}
-          <div id="footer">
-            <div className="feel_like">Made by </div>
-            <div className="weather">Anurag Sharma</div>
           </div>
-        </main>
-      </div>
+        ) : ('')}
+        <div id="footer">
+          Made by <br />
+            Anurag Sharma
+          </div>
+      </main>
+
     </div>
+
   );
 }
 
